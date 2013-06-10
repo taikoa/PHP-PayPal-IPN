@@ -239,7 +239,13 @@ class IpnListener {
         $r .= "\n";
 
         foreach ($this->post_data as $key => $value) {
-            $r .= str_pad($key, 25)."$value\n";
+            if(is_array($key)) {
+                foreach($key as $k => $v) {
+                    $r .= str_pad($k, 25)."$v\n";
+                }
+            }else{
+                $r .= str_pad($key, 25)."$value\n";
+            }
         }
         $r .= "\n\n";
 
